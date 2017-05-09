@@ -1,0 +1,110 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+def _versionName = '1.0.4'
+
+android {
+  compileSdkVersion 25
+  buildToolsVersion "25.0.2"
+
+  defaultConfig {
+    minSdkVersion 14
+    targetSdkVersion 25
+    versionCode 1
+    versionName _versionName
+
+    consumerProguardFiles 'proguard-rules.pro'
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+group = "cn.itguy.allshare"
+version = _versionName
+
+def siteUrl = 'https://github.com/szitguy/Allshare'
+def gitUrl = 'https://github.com/szitguy/Allshare'
+
+
+install {
+  repositories.mavenInstaller {
+    // This generates POM.xml with proper parameters
+    pom {
+      project {
+        packaging 'aar'
+
+        name 'An android library aims to integrate all share platforms for more convenient using.'
+        url siteUrl
+
+        licenses {
+          license {
+            name 'The MIT License (MIT)'
+            url 'http://opensource.org/licenses/MIT'
+          }
+        }
+        developers {
+          developer {
+            id 'szitguy'
+            name 'Martin'
+            email 'luohuafengyue@163.com'
+          }
+        }
+        scm {
+          connection gitUrl
+          developerConnection gitUrl
+          url siteUrl
+
+        }
+      }
+    }
+  }
+}
+
+task sourcesJar(type: Jar) {
+  from android.sourceSets.main.java.srcDirs
+  classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+  source = android.sourceSets.main.java.srcDirs
+  classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+  classifier = 'javadoc'
+  from javadoc.destinationDir
+}
+artifacts {
+  archives javadocJar
+  archives sourcesJar
+}
+
+bintray {
+  user = BINTRAY_USER
+//  if (project.hasProperty("KEY")) {
+//    key = KEY
+//  }
+  key = BINTRAY_API_KEY
+
+  configurations = ['archives']
+  pkg {
+    repo = "maven"
+    name = "allshare"
+    websiteUrl = siteUrl
+    vcsUrl = gitUrl
+    licenses = ["MIT"]
+    publish = true
+  }
+}

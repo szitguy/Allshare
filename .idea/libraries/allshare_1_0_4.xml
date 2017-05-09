@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="allshare-1.0.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/9e76ffdc1381b4f5aa593a7bbc3898e9b903a566/output/jars/libs/libammsdk.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/9e76ffdc1381b4f5aa593a7bbc3898e9b903a566/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/9e76ffdc1381b4f5aa593a7bbc3898e9b903a566/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/9e76ffdc1381b4f5aa593a7bbc3898e9b903a566/output/jars/libs/open_sdk_r5509_lite.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.itguy.allshare/allshare/1.0.4/cbc5450b4fc5960dedebe6742c459384cdadaa94/allshare-1.0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

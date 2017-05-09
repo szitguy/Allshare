@@ -1,0 +1,12 @@
+<resources>
+  <string name="app_name">AllShare</string>
+  <string name="share_failed">分享失败</string>
+
+  <!-- 如：tencent222222，必须要tencent前缀 -->
+  <string name="all_share_qq_app_id">qqAppId</string>
+
+  <!-- 如wx1234567890123456 -->
+  <string name="all_share_wx_app_id">wxAppId</string>
+
+  <string name="all_share_wb_app_id">wbAppId</string>
+</resources>
