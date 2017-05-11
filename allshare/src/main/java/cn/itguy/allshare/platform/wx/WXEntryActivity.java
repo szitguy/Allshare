@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.widget.Toast;
 import cn.itguy.allshare.AllShare;
-import cn.itguy.allshare.Constants;
 import cn.itguy.allshare.Content;
 import cn.itguy.allshare.LogUtils;
 import cn.itguy.allshare.R;
@@ -141,7 +140,7 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
             case BaseResp.ErrCode.ERR_USER_CANCEL:
                 LogUtils.e("%s: Share canceled.", TAG);
                 if (listener != null) {
-                    listener.send(Share.RESULT_FAILED, null);
+                    listener.send(Share.RESULT_CANCELD, null);
                 }
                 break;
             default:

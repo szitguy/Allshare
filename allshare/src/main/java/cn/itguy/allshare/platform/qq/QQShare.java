@@ -39,6 +39,10 @@ public class QQShare extends ResultReceiver implements Share {
             if (callback != null) {
                 callback.onSuccess();
             }
+        } else if (resultCode == Share.RESULT_CANCELD) {
+            if (callback != null) {
+                callback.onCanceled();
+            }
         } else {
             if (callback != null) {
                 callback.onFailed();

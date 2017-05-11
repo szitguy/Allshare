@@ -10,6 +10,8 @@ public interface Share {
 
     int RESULT_SUCCESS = 1;
 
+    int RESULT_CANCELD = 2;
+
     void share(Content content, Callback callback);
 
 }

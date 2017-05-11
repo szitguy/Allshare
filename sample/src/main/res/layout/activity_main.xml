@@ -12,17 +12,85 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cn.itguy.allshare.sample.MainActivity">
 
-  <Button
-      android:id="@+id/wxShareButton"
-      android:layout_width="wrap_content"
+  <TextView
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:onClick="onWxShareButtonClick"
-      android:text="微信分享"/>
+      android:text="微信分享"
+      />
 
-  <Button
-      android:id="@+id/qqShareButton"
+  <CheckBox
+      android:id="@+id/shareToMomentCheckBox"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:onClick="onQqShareButtonClick"
-      android:text="QQ分享"/>
+      android:text="分享到朋友圈"
+      />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
+    <Button
+        android:id="@+id/wxShareTextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onWxShareTextButtonClick"
+        android:text="文本"/>
+
+    <Button
+        android:id="@+id/wxShareLinkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onWxShareLinkButtonClick"
+        android:text="链接"/>
+
+    <Button
+        android:id="@+id/wxShareImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onWxShareImageButtonClick"
+        android:text="图片"/>
+  </LinearLayout>
+
+
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="QQ分享"
+      />
+
+  <CheckBox
+      android:id="@+id/shareToQzoneCheckBox"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="分享到QQ空间"
+      />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
+
+    <Button
+        android:id="@+id/qqShareLinkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onQQShareLinkButtonClick"
+        android:text="链接"/>
+
+    <Button
+        android:id="@+id/qqShareImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onQQShareImageButtonClick"
+        android:text="图片"/>
+  </LinearLayout>
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="微博分享（开发中…）"
+      />
 </LinearLayout>

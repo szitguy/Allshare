@@ -8,9 +8,14 @@ import cn.itguy.allshare.AllShare;
  */
 public class SampleApplication extends Application {
 
+    public static SampleApplication instance;
+
     @Override public void onCreate() {
         super.onCreate();
+        instance = this;
+
         // 初始化Allshare
         AllShare.init(this);
     }
+
 }
