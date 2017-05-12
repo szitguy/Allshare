@@ -31,7 +31,7 @@ dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-group = "cn.itguy.allshare"
+group = "com.github.szitguy"
 version = _versionName
 
 def siteUrl = 'https://github.com/szitguy/Allshare'
