@@ -57,10 +57,49 @@ AllSharePlugin {
 建议在应用的Application子类中初始化，如：
 
 ```
-AllShare.init(this);
+AllShare.init(applicationContext);
 ```
 
-### 2. 微信分享
+### 2. 统一的结果回调
+
+实现`cn.itguy.allshare.Callback`接口，如：
+
+```
+private static class ShareCallback implements Callback {
+
+    WeakReference<Context> contextWeakRef;
+
+    public ShareCallback(Context context) {
+        contextWeakRef = new WeakReference<>(context);
+    }
+
+    @Override public void onSuccess() {
+        Context context = contextWeakRef.get();
+        if (null != context) {
+
+            Toast.makeText(context, "分享成功", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override public void onFailed() {
+        Context context = contextWeakRef.get();
+        if (null != context) {
+
+            Toast.makeText(context, "分享失败", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override public void onCanceled() {
+        Context context = contextWeakRef.get();
+        if (null != context) {
+
+            Toast.makeText(context, "取消分享", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
+```
+
+### 3. 微信分享
 
 #### 分享文本
 
@@ -70,7 +109,7 @@ content.setType(Content.Type.TEXT);
 content.setTimeline(momentCheckBox.isChecked()); // 是否分享到朋友圈
 content.setText(String.format("%s --- %s", ALL_SHARE_GITHUB, TITLE)); // 设置文本内容
 content.setDescription(DESC); // 设置描述
-AllShare.share(this, content, new ShareCallback(this));
+AllShare.share(activityContext, content, new ShareCallback(this));
 ```
 
 #### 分享链接
@@ -83,7 +122,7 @@ content.setTitle(TITLE); // 设置标题
 content.setDescription(DESC); // 设置描述
 content.setLink(ALL_SHARE_GITHUB); // 设置链接
 content.setThumb(icon); // 设置缩略图
-AllShare.share(this, content, new ShareCallback(this));
+AllShare.share(activityContext, content, new ShareCallback(this));
 ```
 
 #### 分享图片
@@ -94,10 +133,10 @@ content.setType(Content.Type.IMAGE);
 content.setTimeline(momentCheckBox.isChecked()); // 是否分享到朋友圈
 content.setImage(icon); // 设置图片
 content.setThumb(icon); // 设置缩略图
-AllShare.share(this, content, new ShareCallback(this));
+AllShare.share(activityContext, content, new ShareCallback(this));
 ```
 
-### 2. QQ分享
+### 4. QQ分享
 
 #### 分享链接
 
@@ -109,7 +148,7 @@ content.setQzone(qzoneCheckBox.isChecked()); // 是否分享到qq空间
 content.setTitle(TITLE); // 设置标题
 content.setTargetUrl(ALL_SHARE_GITHUB); // 设置链接
 content.setSummary(DESC); // 设置描述，可选
-AllShare.share(this, content, new ShareCallback(this));
+AllShare.share(activityContext, content, new ShareCallback(this));
 ```
 
 #### 分享图片
@@ -122,7 +161,7 @@ if (qzoneCheckBox.isChecked()) {
 QQContent content = new QQContent();
 content.setType(Content.Type.IMAGE);
 content.setImageUrl(ICON_FILE.getAbsolutePath()); // 必须为本地图片
-AllShare.share(this, content, new ShareCallback(this));
+AllShare.share(activityContext, content, new ShareCallback(this));
 ```
 
 License
